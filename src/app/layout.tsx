@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${spaceGrotesk.variable} bg-white text-black min-h-screen font-sans`}>
+        <nav className="w-full flex justify-center py-6 border-b border-neutral-200 mb-8">
+          <ul className="flex gap-8 text-lg">
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/projects">Projects</Link></li>
+            <li><Link href="/resume">Resume</Link></li>
+            <li><Link href="/blog">Blog</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+          </ul>
+        </nav>
+        <main className="max-w-2xl mx-auto px-4">{children}</main>
       </body>
     </html>
   );
