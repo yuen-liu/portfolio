@@ -1,22 +1,35 @@
 import Link from "next/link";
 
 const posts = [
-  { slug: "first-post", title: "First Blog Post", summary: "This is a summary of the first blog post." },
-  { slug: "second-post", title: "Second Blog Post", summary: "This is a summary of the second blog post." },
+  { slug: "first-post", title: "cold intros, warm intros, & a dream", 
+    summary: "6/12/25:\nSummer" },
+  // { slug: "second-post", title: "Second Blog Post", summary: "This is a summary of the second blog post." },
 ];
 
 export default function BlogPage() {
   return (
-    <section>
-      <h1 className="text-3xl font-bold mb-4">Blog</h1>
-      <ul className="space-y-4">
+    <section className="max-w-4xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-8">Blog</h1>
+      <div className="space-y-8">
         {posts.map(post => (
-          <li key={post.slug} className="border p-4 rounded bg-neutral-100">
-            <Link href={`/blog/${post.slug}`} className="text-xl font-semibold hover:underline">{post.title}</Link>
-            <p className="text-neutral-700">{post.summary}</p>
-          </li>
+          <article 
+            key={post.slug} 
+            className="group p-6 rounded-lg border border-neutral-200 hover:border-neutral-300 transition-colors duration-200"
+          >
+            <Link 
+              href={`/blog/${post.slug}`} 
+              className="block"
+            >
+              <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-600 transition-colors duration-200">
+                {post.title}
+              </h2>
+              <p className="text-neutral-600 leading-relaxed">
+                {post.summary}
+              </p>
+            </Link>
+          </article>
         ))}
-      </ul>
+      </div>
     </section>
   );
 } 
