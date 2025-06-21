@@ -24,7 +24,7 @@ export default function BlogPage() {
               <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-600 transition-colors duration-200">
                 {post.title}
               </h2>
-              <p className="text-neutral-600 leading-relaxed">
+              <p className="text-neutral-600 leading-relaxed whitespace-pre-line">
                 {post.summary}
               </p>
             </Link>
