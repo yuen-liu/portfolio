@@ -3,7 +3,8 @@ import Link from "next/link";
 const posts = [
   { slug: "first-post", title: "cold intros, warm intros, & a dream", 
     summary: "6/12/25:\nSummer" },
-  // { slug: "second-post", title: "Second Blog Post", summary: "This is a summary of the second blog post." },
+  { slug: "second-post", title: "internal conviction + meeting new ppl", 
+    summary: "6/20/2025:\nSummer" },
 ];
 
 export default function BlogPage() {
