@@ -29,7 +29,6 @@ export default function RootLayout({
             <li><Link href="/projects">Projects</Link></li>
             <li><Link href="/resume">Resume</Link></li>
             <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
           </ul>
         </nav>
         <main className="max-w-2xl mx-auto px-4">{children}</main>
