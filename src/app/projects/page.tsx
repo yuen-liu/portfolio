@@ -5,10 +5,14 @@ export default function ProjectsPage() {
       <h2 className="text-2xl font-semibold mt-8 mb-2">Dry Lab</h2>
       <div className="space-y-4">
         <div>
-          <strong>PBD Mechanistic Interpretability</strong> – Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.
+          <strong>PBD Mechanistic Interpretability @ Alquraishi Lab</strong> – Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.
         </div>
         <div>
-          <strong>PBD-SliM Dataset Curation</strong> – Curated a high-quality dataset of &gt;1.2 million interactions, applying FAIR principles to train statistical-mechanics based machine learning models. Used Gaussian mixture models for data analysis.
+          <strong>PBD-SLiM Dataset Curation @ Alquraishi Lab</strong> – Curated a high-quality dataset of &gt;1.2 million interactions, applying FAIR principles to train statistical-mechanics based machine learning models. Used Gaussian mixture models for data analysis.
+        </div>
+        <div>
+          <strong>PBD Explorer</strong> - Built a full-stack web app with fuzzy search to visualize protein structures and interactions.
+          <a href="https://pbd-viewer.vercel.app/" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">[link]</a>
         </div>
         <div>
           <strong>PaperMine</strong> – Developed a tool to extract and normalize chemical and biological relationships from scientific literature using named entity recognition and context-aware search.{' '}

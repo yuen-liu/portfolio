@@ -50,46 +50,8 @@ export default function SecondPost() {
           </h2>
           
           <p className="mb-6">
-            One of my goals this summer was to meet 100 interesting (new) people. I&apos;ll be updating this list (replacing everyone&apos;s name with an acronym),
-            but here it is so far:
+            One of my goals this summer was to meet 100 interesting (new) people. As of Aug 5, 2025 I&apos;ve hit the 50 person benchmark and very, very glad to say I&apos;ve made some amazing friends along the way :D
           </p>
-
-          <ul className="space-y-6">
-            <li>
-              <strong className="text-neutral-800">The Janitor:</strong> I hope I meet you again one day. You reminded me of my own father, 5000 miles away.
-              You walked up to me on a Tuesday night at 10:30 PM in Milstein Library. Instead of kicking me out (the library closed at 9 PM),
-              you asked me if I thought your daughter could ever end up here. You are an incredible father for working this hard,
-              believing in your daughter, and pushing her to do her best. That one interaction is one of my top memories from this summer.
-              And yes, Corina, you most definitely belong here at Columbia (though maybe consider Harvard or Stanford given the campus climate).
-            </li>
-            <li>
-              <strong className="text-neutral-800">Ash:</strong> The loveliest, kindest, & friendliest person I&apos;ve met this summer :) incredibly smart and hard-working.
-              I hope we&apos;ll stay friends for a long time—I really look up to you, both in the lab and as a person.
-            </li>
-            <li>
-              <strong className="text-neutral-800">Elf:</strong> Thanks for the startup internship offer LOL & respect the grind for your dreams.
-            </li>
-            <li>
-              <strong className="text-neutral-800">R:</strong> Respect the willpower to drop a cozy, high-paying job to chase the startup dream.
-            </li>
-            <li>
-              <strong className="text-neutral-800">Ron:</strong> Holy networking legend. One of the craziest & hardest working people I&apos;ve met.
-              Also, respect the work-hard-play-hard ethic (I don&apos;t think I&apos;ll ever have the energy to work until 3 AM,
-              hit a rave, and repeat daily—but massive respect).
-            </li>
-            <li>
-              <strong className="text-neutral-800">Cee:</strong> Criminal Minds producer.
-            </li>
-            <li>
-              <strong className="text-neutral-800">Sair:</strong> Frontend engineer.
-            </li>
-            <li>
-              <strong className="text-neutral-800">Dae:</strong> Startup founder turned engineer.
-            </li>
-            <li>
-              <strong className="text-neutral-800">Dae&apos;s Girlfriend:</strong> Startup founder? Or engineer? idk but u cool.
-            </li>
-          </ul>
         </section>
       </div>
     </article>
