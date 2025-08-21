@@ -6,6 +6,7 @@ export default function ProjectsPage() {
       <div className="space-y-4">
         <div>
           <strong>PBD Mechanistic Interpretability @ Alquraishi Lab</strong> – Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.
+          <a href="https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">[link]</a>
         </div>
         <div>
           <strong>PBD-SLiM Dataset Curation @ Alquraishi Lab</strong> – Curated a high-quality dataset of &gt;1.2 million interactions, applying FAIR principles to train statistical-mechanics based machine learning models. Used Gaussian mixture models for data analysis.
