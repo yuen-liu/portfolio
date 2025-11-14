@@ -42,8 +42,8 @@ export default function Home() {
       {/* About Section */}
       <section>
         <p className="text-lg leading-relaxed text-black dark:text-neutral-300 mb-6">
-          Hi! I'm an undergraduate at Columbia University studying Computer Science and Biochemistry. 
-          I'm passionate about AI, drug discovery, and startups. I'm grateful to be supported by the 
+          Hi! I&apos;m an undergraduate at Columbia University studying Computer Science and Biochemistry. 
+          I&apos;m passionate about AI, drug discovery, and startups. I&apos;m grateful to be supported by the 
           I.I. Rabi Scholarship.
         </p>
         <p className="text-lg leading-relaxed text-black dark:text-neutral-300">
