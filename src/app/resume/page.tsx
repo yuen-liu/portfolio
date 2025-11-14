@@ -1,8 +1,19 @@
 export default function ResumePage() {
   return (
-    <section>
-      <h1 className="text-3xl font-bold mb-4">Resume</h1>
-      <a href="https://docs.google.com/document/d/1V6yTWYBUrfsMEKik0jbO6ZChZyMan3hURvEiwTYy9HA/edit?usp=sharing" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">check out my CV here</a>
-    </section>
+    <div className="space-y-8">
+      <h1 className="text-4xl font-bold mb-8 text-black dark:text-white">resume</h1>
+      <div className="prose max-w-none">
+        <p className="text-lg text-black dark:text-neutral-300">
+          <a
+            href="https://docs.google.com/document/d/1V6yTWYBUrfsMEKik0jbO6ZChZyMan3hURvEiwTYy9HA/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--global-theme-color)] hover:underline inline-flex items-center gap-2"
+          >
+            Check out my CV here →
+          </a>
+        </p>
+      </div>
+    </div>
   );
 } 

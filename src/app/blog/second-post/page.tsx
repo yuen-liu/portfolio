@@ -1,19 +1,14 @@
 export default function SecondPost() {
   return (
-    <article className="max-w-3xl mx-auto px-4 py-8">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">internal conviction + meeting new ppl</h1>
-        <div className="text-neutral-500 text-sm">June 20, 2025</div>
+    <article className="space-y-8">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">internal conviction + meeting new ppl</h1>
+        <div className="text-black dark:text-neutral-400 text-sm">June 20, 2025</div>
       </div>
 
-      <div className="prose lg:prose-xl">
-        <p className="text-neutral-700 mb-6">
+      <div className="prose max-w-none">
+        <p className="text-black dark:text-neutral-300 mb-6 leading-relaxed">
           placeholder
-        </p>
-        <p className="text-neutral-700 mb-6">
-          
-        </p>
-        <p className="text-neutral-700">
         </p>
       </div>
     </article>

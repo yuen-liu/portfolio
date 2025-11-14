@@ -1,19 +1,14 @@
 export default function FirstPost() {
   return (
-    <article className="max-w-3xl mx-auto px-4 py-8">
+    <article className="space-y-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">cold intros, warm intros, & a dream</h1>
-        <div className="text-neutral-500 text-sm">June 12, 2025</div>
+        <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">cold intros, warm intros, & a dream</h1>
+        <div className="text-black dark:text-neutral-400 text-sm">June 12, 2025</div>
       </div>
       
-      <div className="prose lg:prose-xl">
-        <p className="text-neutral-700 mb-6">
+      <div className="prose max-w-none">
+        <p className="text-black dark:text-neutral-300 mb-6 leading-relaxed">
           placeholder
-        </p>
-        <p className="text-neutral-700 mb-6">
-          
-        </p>
-        <p className="text-neutral-700">
         </p>
       </div>
     </article>
