@@ -1,6 +1,16 @@
 export default function ProjectsPage() {
   const dryLabProjects = [
     {
+      title: "Machine Learning Intern @ Friesner Lab (in collaboration with Schrödinger)",
+      description: "Designing sparse-autoencoder interpretability pipeline for ML-enhanced IFD-MD protein–ligand docking suite, analyzing 100,000+ cases to enhance model reliability for enterprise drug-design tools.",
+      // link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"
+    },
+    {
+      title: "Research Assistant @ Alquraishi Lab",
+      description: "Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.",
+      link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"
+    },
+    {
       title: "PBD Mechanistic Interpretability @ Alquraishi Lab",
       description: "Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.",
       link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"

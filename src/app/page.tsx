@@ -25,7 +25,7 @@ export default function Home() {
           </p>
           <div className="space-y-2 text-black dark:text-neutral-400">
             <p>Columbia University</p>
-            <p>New York, NY 10027</p>
+            <p>New York, NY + Bay Area, CA</p>
             <p className="pt-2">
               Reach me at{" "}
               <a
@@ -43,11 +43,16 @@ export default function Home() {
       <section>
         <p className="text-lg leading-relaxed text-black dark:text-neutral-300 mb-6">
           Hi! I&apos;m an undergraduate at Columbia University studying Computer Science and Biochemistry. 
-          I&apos;m passionate about AI, drug discovery, and startups. I&apos;m grateful to be supported by the 
-          I.I. Rabi Scholarship.
-        </p>
-        <p className="text-lg leading-relaxed text-black dark:text-neutral-300">
-          Mission: make drug discovery more accessible
+          I&apos;m passionate about ML, drug discovery, and startups. I&apos;m grateful to be supported by the{" "}
+          <a
+            href="https://urf.columbia.edu/urf/research/rabi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--global-theme-color)] hover:underline"
+          >
+            I.I. Rabi Scholarship
+          </a>
+          .
         </p>
       </section>
 

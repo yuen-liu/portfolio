@@ -5,7 +5,7 @@ export default function AboutPage() {
       
       <div className="prose max-w-none">
         <p className="text-lg text-black dark:text-neutral-300 leading-relaxed mb-6">
-          Wet lab research on small molecule synthesis + neurodegeneration + sleep in high school at Stanford and co., now building cool stuff for ML in drug discovery.
+          Wet lab research on small molecule synthesis + neurodegeneration + sleep at Stanford and co., now building cool stuff for ML in drug discovery.
         </p>
         <p className="text-lg text-black dark:text-neutral-300 leading-relaxed">
           Recording and photographing bits and pieces of daily life + side quests: check out{" "}
