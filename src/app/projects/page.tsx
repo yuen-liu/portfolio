@@ -1,19 +1,21 @@
+"use client";
+
+import { useState, useMemo } from "react";
+
 export default function ProjectsPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const dryLabProjects = [
+    {
+      title: "Deciphering the Biophysical Determinants of Peptide-Binding Domain Specificity Using Machine Learning @ Alquraishi Lab",
+      description: "Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.",
+      link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing",
+      award: "Columbia Undergraduate Research Fair: Best in Track (Responsible and Sustainable AI), 2025"
+    },
     {
       title: "Machine Learning Intern @ Friesner Lab (in collaboration with Schrödinger)",
       description: "Designing sparse-autoencoder interpretability pipeline for ML-enhanced IFD-MD protein–ligand docking suite, analyzing 100,000+ cases to enhance model reliability for enterprise drug-design tools.",
       // link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"
-    },
-    {
-      title: "Research Assistant @ Alquraishi Lab",
-      description: "Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.",
-      link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"
-    },
-    {
-      title: "PBD Mechanistic Interpretability @ Alquraishi Lab",
-      description: "Explored mechanistic interpretability in protein language models using sparse autoencoders trained on 4,000+ Pfam domains.",
-      link: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing"
     },
     {
       title: "PBD-SLiM Dataset Curation @ Alquraishi Lab",
@@ -85,25 +87,89 @@ export default function ProjectsPage() {
     }
   ];
 
+  // Filter projects based on search query
+  const filteredDryLabProjects = useMemo(() => {
+    if (!searchQuery.trim()) return dryLabProjects;
+    const query = searchQuery.toLowerCase();
+    return dryLabProjects.filter(
+      (project) =>
+        project.title.toLowerCase().includes(query) ||
+        project.description.toLowerCase().includes(query) ||
+        (project.award && project.award.toLowerCase().includes(query))
+    );
+  }, [searchQuery]);
+
+  const filteredWetLabProjects = useMemo(() => {
+    if (!searchQuery.trim()) return wetLabProjects;
+    const query = searchQuery.toLowerCase();
+    return wetLabProjects.filter(
+      (project) =>
+        project.title.toLowerCase().includes(query) ||
+        project.authors.toLowerCase().includes(query) ||
+        project.keywords.toLowerCase().includes(query) ||
+        project.abstract.toLowerCase().includes(query) ||
+        (project.doi && project.doi.toLowerCase().includes(query))
+    );
+  }, [searchQuery]);
+
   return (
     <div className="space-y-12">
-      <h1 className="text-4xl font-bold mb-8 text-black dark:text-white">projects</h1>
+      <div className="space-y-6 mb-8">
+        <h1 className="text-4xl font-bold text-black dark:text-white">projects</h1>
+        <div className="relative w-full md:w-96">
+          <input
+            type="text"
+            placeholder="Search projects..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-2 pl-10 border border-neutral-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-[var(--global-theme-color)] transition-colors"
+          />
+          <svg
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400 dark:text-neutral-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
       
       {/* Dry Lab Projects - Grid Layout */}
       <section>
         <h2 className="text-2xl font-semibold mb-6 text-black dark:text-neutral-200">Dry Lab</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {dryLabProjects.map((project, index) => (
+        {filteredDryLabProjects.length === 0 ? (
+          <p className="text-black dark:text-neutral-400">No projects found matching your search.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredDryLabProjects.map((project, index) => (
             <div
               key={index}
               className="p-6 border border-neutral-200 dark:border-gray-700 rounded-lg hover:border-[var(--global-theme-color)] hover:shadow-md transition-all duration-200 bg-white dark:bg-gray-800"
             >
-              <h3 className="text-lg font-semibold mb-3 text-black dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-black dark:text-neutral-300 mb-4 text-sm leading-relaxed">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <h3 className="text-lg font-semibold text-black dark:text-white">
+                  {project.title}
+                </h3>
+                {project.award && (
+                  <span className="flex-shrink-0 px-2 py-1 text-xs font-semibold bg-[var(--global-theme-color)] text-white rounded">
+                    Award
+                  </span>
+                )}
+              </div>
+              <p className="text-black dark:text-neutral-300 mb-3 text-sm leading-relaxed">
                 {project.description}
               </p>
+              {project.award && (
+                <p className="text-xs text-[var(--global-theme-color)] font-medium mb-3">
+                  {project.award}
+                </p>
+              )}
               {project.link && (
                 <a
                   href={project.link}
@@ -115,15 +181,19 @@ export default function ProjectsPage() {
                 </a>
               )}
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Wet Lab Projects - List Layout */}
       <section>
         <h2 className="text-2xl font-semibold mb-6 text-black dark:text-neutral-200">Wet Lab / Synthesis</h2>
-        <div className="space-y-8">
-          {wetLabProjects.map((project, index) => (
+        {filteredWetLabProjects.length === 0 ? (
+          <p className="text-black dark:text-neutral-400">No projects found matching your search.</p>
+        ) : (
+          <div className="space-y-8">
+            {filteredWetLabProjects.map((project, index) => (
             <div
               key={index}
               className="p-6 border border-neutral-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800"
@@ -157,8 +227,9 @@ export default function ProjectsPage() {
                 </p>
               </div>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
