@@ -1,10 +1,8 @@
 import Link from "next/link";
 
 const posts = [
-  { slug: "first-post", title: "papermine", 
-    summary: "6/12/25:\nSummer", date: "November, 2025" },
-  { slug: "second-post", title: "xyz", 
-    summary: "6/20/2025:\nSummer", date: "December, 2025" },
+  { slug: "first-post", title: "How AF2 Thinks About Proteins", 
+    summary: "1/03/26", date: "January, 2026" },
 ];
 
 export default function BlogPage() {
