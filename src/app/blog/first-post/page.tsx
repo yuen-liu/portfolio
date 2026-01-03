@@ -26,13 +26,13 @@ export default function FirstPost() {
         </p>
         
         <p>
-          But there's a catch. Letters are easy; they're one-dimensional and lie flat on a page. Amino acids, on the other hand, are three-dimensional troublemakers. They twist, rotate, crash into each other, and form bonds like kids in a chaotic soccer match. So, how do we tackle this 3D chaos?
+          But there&apos;s a catch. Letters are easy; they&apos;re one-dimensional and lie flat on a page. Amino acids, on the other hand, are three-dimensional troublemakers. They twist, rotate, crash into each other, and form bonds like kids in a chaotic soccer match. So, how do we tackle this 3D chaos?
         </p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">How do we turn a protein into something a computer understands?</h2>
         
         <p>
-          This is the question that I've been looking into for the past month or so. One of my (amazing) lab mentors initially explained it, then an (also amazing) professor in class, and then another (extremely amazing) lab mentor. Anyways, all this to say I find the question quite beautiful, so I did some online sleuthing. There are a lot of great articles, videos, and papers that answer this question, but I find that many of them are full of technical jargon, so let me take a stab at making this problem more accessible.
+          This is the question that I&apos;ve been looking into for the past month or so. One of my (amazing) lab mentors initially explained it, then an (also amazing) professor in class, and then another (extremely amazing) lab mentor. Anyways, all this to say I find the question quite beautiful, so I did some online sleuthing. There are a lot of great articles, videos, and papers that answer this question, but I find that many of them are full of technical jargon, so let me take a stab at making this problem more accessible.
         </p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">The Big Picture</h2>
@@ -49,7 +49,7 @@ export default function FirstPost() {
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">Part 1: EvoFormer</h2>
         
         <p>
-          The Evoformer is the brain of AF2: it processes evolutionary and structural info with attention (equivalent to ChatGPT's Transformer).
+          The Evoformer is the brain of AF2: it processes evolutionary and structural info with attention (equivalent to ChatGPT&apos;s Transformer).
         </p>
         
         <h3 className="text-xl font-semibold mt-6 mb-3 text-black dark:text-white">How it thinks in two directions at once:</h3>
@@ -95,13 +95,13 @@ export default function FirstPost() {
         </p>
         
         <p>
-          Now here's where things get interesting: it uses geometry you learned in elementary-school.
+          Now here&apos;s where things get interesting: it uses geometry you learned in elementary-school.
         </p>
         
         <h3 className="text-xl font-semibold mt-6 mb-3 text-black dark:text-white">Bag of Triangles</h3>
         
         <p>
-          Remember the triangular inequality from math class? The one that says the longest side of a triangle can't be longer than the other two sides combined? (ML4FG slides)
+          Remember the triangular inequality from math class? The one that says the longest side of a triangle can&apos;t be longer than the other two sides combined? (ML4FG slides)
         </p>
         
         <Image
@@ -114,7 +114,7 @@ export default function FirstPost() {
         </p>
         
         <p>
-          Pick any three amino acids in your protein. Let's call them i, j, and k. The distances between them must satisfy the triangle inequality. Now do this for thousands upon thousands of overlapping triangles throughout the entire protein. Every triplet of amino acids forms a triangle, and every triangle must be geometrically valid. (ML4FG slides)
+          Pick any three amino acids in your protein. Let&apos;s call them i, j, and k. The distances between them must satisfy the triangle inequality. Now do this for thousands upon thousands of overlapping triangles throughout the entire protein. Every triplet of amino acids forms a triangle, and every triangle must be geometrically valid. (ML4FG slides)
         </p>
         
         <Image
@@ -123,17 +123,17 @@ export default function FirstPost() {
         />
         
         <p>
-          This prevents nonsense predictions. Without this constraint, the model could predict that amino acids A and B are both right next to amino acid C, but somehow A and B are miles apart from each other. That's physically impossible—and the triangle inequality catches it.
+          This prevents nonsense predictions. Without this constraint, the model could predict that amino acids A and B are both right next to amino acid C, but somehow A and B are miles apart from each other. That&apos;s physically impossible—and the triangle inequality catches it.
         </p>
         
         <p>
-          Think of it as a "bag of triangles"—thousands of small geometric constraints that, when satisfied simultaneously, create a realistic protein structure. It's like a complex 3D jigsaw puzzle where every piece has to fit with every other piece perfectly.
+          Think of it as a &quot;bag of triangles&quot;—thousands of small geometric constraints that, when satisfied simultaneously, create a realistic protein structure. It&apos;s like a complex 3D jigsaw puzzle where every piece has to fit with every other piece perfectly.
         </p>
         
         <h3 className="text-xl font-semibold mt-6 mb-3 text-black dark:text-white">Invariant Point Attention</h3>
         
         <p>
-          Now the Structure Module still needs to think in 3D space. It does this by using a specialized attention mechanism called invariant point attention (IPA). IPA lets us represent how 3D objects behave. Crucially, no matter how you rotate or move a protein or amino acid, the internal relationships stay the same, similar to how a cup in your hand is still the same cup when you flip it over. IPA does this by being "SE(3)-equivariant" (which is math-speak for rotation and translation don't matter)—when the model is trained, we incorporate many different alignments to get the same weights.
+          Now the Structure Module still needs to think in 3D space. It does this by using a specialized attention mechanism called invariant point attention (IPA). IPA lets us represent how 3D objects behave. Crucially, no matter how you rotate or move a protein or amino acid, the internal relationships stay the same, similar to how a cup in your hand is still the same cup when you flip it over. IPA does this by being &quot;SE(3)-equivariant&quot; (which is math-speak for rotation and translation don&apos;t matter)—when the model is trained, we incorporate many different alignments to get the same weights.
         </p>
         
         <p>
@@ -147,7 +147,7 @@ export default function FirstPost() {
 
         <div className="my-8 p-4 border border-neutral-300 dark:border-gray-600 rounded-lg bg-neutral-50 dark:bg-gray-900">
           <p className="text-sm text-neutral-600 dark:text-neutral-400 italic">
-            The green term is our standard sequence attention, the blue term is our learned biases from training, and the last pink term accounts for rotational (R) and translation (t) changes (it's SE(3)-equivariant!)
+            The green term is our standard sequence attention, the blue term is our learned biases from training, and the last pink term accounts for rotational (R) and translation (t) changes (it&apos;s SE(3)-equivariant!)
           </p>
         </div>
         <h3 className="text-xl font-semibold mt-6 mb-3 text-black dark:text-white">Building the Protein: Backbone and Sidechain Prediction</h3>
@@ -159,7 +159,7 @@ export default function FirstPost() {
         <h4 className="text-lg font-semibold mt-4 mb-2 text-black dark:text-white">Step 1: The Backbone</h4>
         
         <p>
-          Every protein has a backbone: a repeating chain of amino acids where atoms follow a N–Cα–C′ pattern. The model predicts this first, using those triangle constraints we talked about. Just like in NLP where we have a "bag of words," we now have a "bag of triangles." Each triangle (or group of amino acids) is like a token that gets processed through attention mechanisms, always checking: "Does this violate physics? Does this match what the EvoFormer learned?"
+          Every protein has a backbone: a repeating chain of amino acids where atoms follow a N–Cα–C′ pattern. The model predicts this first, using those triangle constraints we talked about. Just like in NLP where we have a &quot;bag of words,&quot; we now have a &quot;bag of triangles.&quot; Each triangle (or group of amino acids) is like a token that gets processed through attention mechanisms, always checking: &quot;Does this violate physics? Does this match what the EvoFormer learned?&quot;
         </p>
         
         <p>
@@ -175,24 +175,24 @@ export default function FirstPost() {
           Side chains are important because they determine what the protein does: ex. binding to a drug molecule or interacting with other proteins.
         </p>
         
-        <h4 className="text-lg font-semibold mt-4 mb-2 text-black dark:text-white">Starting from a "Black Hole"</h4>
+        <h4 className="text-lg font-semibold mt-4 mb-2 text-black dark:text-white">Starting from a &quot;Black Hole&quot;</h4>
         
         <p>
-          Here's a thought: how do we even get to this triangular rulebook in the first place? Conceptually, the Structure Module starts with all residues collapsed at the exact same point in space. Effectively, it's a "black hole" state.
+          Here&apos;s a thought: how do we even get to this triangular rulebook in the first place? Conceptually, the Structure Module starts with all residues collapsed at the exact same point in space. Effectively, it&apos;s a &quot;black hole&quot; state.
         </p>
         
         <p>
-          Then, via 8 iterative refinement blocks, it gradually expands this collapsed structure into realistic 3D coordinates. Each iteration takes as input its EvoFormer outputs, checks triangular constraints, applies IPA attention, and asks: "Am I getting closer to physical reality?"
+          Then, via 8 iterative refinement blocks, it gradually expands this collapsed structure into realistic 3D coordinates. Each iteration takes as input its EvoFormer outputs, checks triangular constraints, applies IPA attention, and asks: &quot;Am I getting closer to physical reality?&quot;
         </p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">Part 3: FAPE Loss</h2>
         
         <p>
-          Every machine learning model needs a way to know if it's doing well. AlphaFold2 uses Frame Aligned Point Error (FAPE) as its main grading system.
+          Every machine learning model needs a way to know if it&apos;s doing well. AlphaFold2 uses Frame Aligned Point Error (FAPE) as its main grading system.
         </p>
         
         <p>
-          Contrary to its very long name, it's pretty intuitive. Compare where predicted atoms are versus where they should be. By doing this comparison after aligning local reference frames, FAPE loss is robust to global rotations and translations. Mathematically, you're looking at the mean distance between predicted and true atom positions in these aligned frames, rather than a raw Cartesian MSE (ML4FG slides).
+          Contrary to its very long name, it&apos;s pretty intuitive. Compare where predicted atoms are versus where they should be. By doing this comparison after aligning local reference frames, FAPE loss is robust to global rotations and translations. Mathematically, you&apos;re looking at the mean distance between predicted and true atom positions in these aligned frames, rather than a raw Cartesian MSE (ML4FG slides).
         </p>
         
         <Image
@@ -201,7 +201,7 @@ export default function FirstPost() {
         />
         
         <p>
-          However, we've still got to consider our previous losses, so here's our full training objective (note: for training, not fine-tuning) (Jumper et. al, 2020):
+          However, we&apos;ve still got to consider our previous losses, so here&apos;s our full training objective (note: for training, not fine-tuning) (Jumper et. al, 2020):
         </p>
         
         <Image
@@ -220,7 +220,7 @@ export default function FirstPost() {
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">Part 4: Recycling</h2>
         
         <p>
-          As one might expect, running AF2 once isn't enough. So we recycle: we run this entire pipeline thrice, each time feeding previous predictions back as input. This iterative refinement loop allows the model to catch and fix inconsistencies, improving structure quality.
+          As one might expect, running AF2 once isn&apos;t enough. So we recycle: we run this entire pipeline thrice, each time feeding previous predictions back as input. This iterative refinement loop allows the model to catch and fix inconsistencies, improving structure quality.
         </p>
         
         <p>
@@ -230,7 +230,7 @@ export default function FirstPost() {
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">Why This Matters Beyond Proteins</h2>
         
         <p>
-          Understanding AF2's architecture unlocks a box that biologists have been trying to crack open for years. Instead of just using a hammer or a pick to pry it open, AF2 uses a variety of tools: a sledge, hammer, and a pick—we combine evolutionary context from MSAs (millions of years of natural selection), structural info from template searches (known protein structures), geometric constraints from bags of triangles (physics), and spatial attention from IPA (3D reasoning).
+          Understanding AF2&apos;s architecture unlocks a box that biologists have been trying to crack open for years. Instead of just using a hammer or a pick to pry it open, AF2 uses a variety of tools: a sledge, hammer, and a pick—we combine evolutionary context from MSAs (millions of years of natural selection), structural info from template searches (known protein structures), geometric constraints from bags of triangles (physics), and spatial attention from IPA (3D reasoning).
         </p>
         
         <p>
@@ -242,11 +242,11 @@ export default function FirstPost() {
         </p>
         
         <p>
-          Of course, limitations exist. AF2 and AF3 are by no means perfect. They're still computationally expensive to run. There isn't an extremely easy way to use it (you can't just type a sequence in like you can with ChatGPT). Proteins are dynamic and shape-shifting, with multiple conformations (otherwise your cells would not interact); AF2 doesn't address this. Protein design remains challenging without additional tools.
+          Of course, limitations exist. AF2 and AF3 are by no means perfect. They&apos;re still computationally expensive to run. There isn&apos;t an extremely easy way to use it (you can&apos;t just type a sequence in like you can with ChatGPT). Proteins are dynamic and shape-shifting, with multiple conformations (otherwise your cells would not interact); AF2 doesn&apos;t address this. Protein design remains challenging without additional tools.
         </p>
         
         <p>
-          Even so, breaking down biology into smaller mathematical units (triangles, attention mechanisms, and geometric constraints) is powerful. AF2 represents a fundamental advance in how we teach computers to understand our cellular machinery. It's attention 2.0 for structural biology, and that's all you need.
+          Even so, breaking down biology into smaller mathematical units (triangles, attention mechanisms, and geometric constraints) is powerful. AF2 represents a fundamental advance in how we teach computers to understand our cellular machinery. It&apos;s attention 2.0 for structural biology, and that&apos;s all you need.
         </p>
         
         <p className="italic text-neutral-600 dark:text-neutral-400">
