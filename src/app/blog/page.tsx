@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const posts = [
-  { slug: "first-post", title: "How AF2 Thinks About Proteins", 
+  { slug: "how-af2-thinks", title: "How AF2 Thinks", 
     summary: "1/03/26", date: "January, 2026" },
 ];
 
