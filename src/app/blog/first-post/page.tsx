@@ -32,7 +32,8 @@ export default function FirstPost() {
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">How do we turn a protein into something a computer understands?</h2>
         
         <p>
-          This is the question that I&apos;ve been looking into for the past month or so. One of my (amazing) lab mentors initially explained it, then an (also amazing) professor in class, and then another (extremely amazing) lab mentor. Anyways, all this to say I find the question quite beautiful, so I did some online sleuthing. There are a lot of great articles, videos, and papers that answer this question, but I find that many of them are full of technical jargon, so let me take a stab at making this problem more accessible.
+        This is a question I&apos;ve been thinking about for the past month. Early explanations from mentors in the lab and in class helped me build some understanding, but they also motivated me to dig deeper into the details.
+        While there are many excellent articles and papers on this topic (linked below in references), my goal here is to understand the architecture by explaining it in a way that&apos;s accessible to a non-technical audience without losing underlying ideas.       
         </p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">The Big Picture</h2>
