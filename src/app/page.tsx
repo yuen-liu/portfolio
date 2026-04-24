@@ -8,7 +8,7 @@ export default function Home() {
         <div className="flex-shrink-0">
           <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-neutral-200 dark:border-gray-700">
             <Image
-              src="/headshot.jpg"
+              src="/headshot.png"
               alt="Bridget Liu"
               fill
               className="object-cover"
