@@ -36,10 +36,10 @@ export default function RootLayout({
       <body className={`${inter.variable} ${fraunces.variable} min-h-screen font-sans`}>
         <ThemeProvider>
           <MolecularField />
-          <div className="relative z-10 min-h-screen">
-            <div className="max-w-5xl mx-auto px-6 py-10 lg:py-16 lg:pl-[21rem]">
+          <div className="relative z-10 min-h-screen pointer-events-none">
+            <div className="max-w-5xl px-6 py-10 lg:py-0 lg:pl-[21rem] lg:min-h-screen lg:flex lg:items-center pointer-events-auto">
               <Sidebar />
-              <main>{children}</main>
+              <main className="w-full">{children}</main>
             </div>
           </div>
         </ThemeProvider>

@@ -85,18 +85,21 @@ const wetLabProjects = [
   {
     title: "Investigated synthesis of analogs of rivastigmine to treat Alzheimer's",
     authors: "Bridget Liu",
+    venue: "Accepted, SCCUR 2022",
     keywords: "Rivastigmine, analog synthesis, Alzheimer's disease, SCCUR",
     abstract: "Investigated synthesis of analogs of rivastigmine to treat Alzheimer's. Presented at 2022 SCCUR."
   },
   {
     title: "LCMS Quantification of Neurotransmitters in Parkinson's",
     authors: "Bridget Liu",
+    venue: "Accepted, WCBSURC 2023",
     keywords: "LCMS, neurotransmitters, quantification, Parkinson's disease, WCBSURC",
     abstract: "Led a project using LCMS to quantify neurotransmitters in Parkinson's. Presented at 2023 WCBSURC."
   },
   {
     title: "Fluorophore-Labeled Peptides Investigation",
     authors: "Bridget Liu",
+    venue: "Accepted, ACS Fall 2023",
     keywords: "Fluorophore, labeled peptides, investigation, ACS",
     abstract: "Spearheaded a project investigating fluorophore-labeled peptides. Presented at 2023 Fall ACS."
   }

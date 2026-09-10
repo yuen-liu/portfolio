@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
@@ -35,16 +34,11 @@ export default function Sidebar() {
   return (
     <aside className="lg:fixed lg:left-10 lg:top-10 lg:w-64 z-20 mb-10 lg:mb-0">
       <div className="panel overflow-hidden">
-        <div className="flex items-center gap-3 px-5 pt-5 pb-4">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 ring-1 ring-[var(--global-border-color)]">
-            <Image src="/headshot.png" alt="Bridget Liu" fill className="object-cover" priority />
-          </div>
-          <div>
-            <h1 className="font-serif text-lg leading-tight text-[var(--global-text-color)]">
-              Bridget Liu
-            </h1>
-            <p className="text-xs text-[var(--global-muted-color)]">Columbia University</p>
-          </div>
+        <div className="px-5 pt-5 pb-4">
+          <h1 className="font-serif text-lg leading-tight text-[var(--global-text-color)]">
+            Bridget Liu
+          </h1>
+          <p className="text-xs text-[var(--global-muted-color)]">Columbia University</p>
         </div>
 
         <nav className="flex px-3 gap-1 border-t border-[var(--global-border-color)] pt-3">
@@ -86,10 +80,20 @@ export default function Sidebar() {
           <ThemeToggle />
         </div>
 
-        <p className="px-5 pb-4 text-[11px] leading-snug text-[var(--global-muted-color)]">
+        <p className="px-5 pb-2 text-[11px] leading-snug text-[var(--global-muted-color)]">
           background: ARV-825, a BRD4-degrading PROTAC studied for brain
-          cancers — real 3D conformer from its PubChem SMILES, not a docked
-          pose
+          cancers, docked to the BRD4 bromodomain—structure predicted with{" "}
+          <a
+            href="https://www.biorxiv.org/content/10.1101/2024.10.10.615955"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chai-1
+          </a>{" "}
+          (Chai Discovery, 2024).
+        </p>
+        <p className="px-5 pb-4 text-[11px] leading-snug text-[var(--global-muted-color)]">
+          interact with said structures for easter eggs!
         </p>
       </div>
     </aside>
