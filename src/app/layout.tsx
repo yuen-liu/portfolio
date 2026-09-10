@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navigation from "@/components/Navigation";
+import Sidebar from "@/components/Sidebar";
+import MolecularField from "@/components/MolecularField";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Bridget Liu | Portfolio",
-  description: "Columbia sophomore studying CS and Biochem. Rabi scholar interested in AI, drug discovery, and startups.",
+  title: "Bridget Liu",
+  description:
+    "Bridget Liu — Columbia I.I. Rabi Scholar studying Computer Science, Math, and Biochemistry. Researching interpretability and ML for drug discovery at Google, Pfizer, and the Friesner & AlQuraishi Labs.",
 };
 
 export default function RootLayout({
@@ -16,12 +33,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen">
+      <body className={`${inter.variable} ${fraunces.variable} min-h-screen font-sans`}>
         <ThemeProvider>
-          <Navigation />
-          <main className="max-w-4xl mx-auto px-4 py-12 lg:py-16">
-            {children}
-          </main>
+          <MolecularField />
+          <div className="relative z-10 min-h-screen">
+            <div className="max-w-5xl mx-auto px-6 py-10 lg:py-16 lg:pl-[21rem]">
+              <Sidebar />
+              <main>{children}</main>
+            </div>
+          </div>
         </ThemeProvider>
         <Analytics />
       </body>

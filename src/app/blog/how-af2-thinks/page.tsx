@@ -10,7 +10,7 @@ import fig8 from './fig8.png';
 
 export default function FirstPost() {
   return (
-    <article className="space-y-8">
+    <article className="panel p-8 md:p-10 space-y-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">How AF2 Thinks</h1>
         <div className="text-black dark:text-neutral-400 text-sm">Jan. 2026</div>

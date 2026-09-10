@@ -7,23 +7,20 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-bold mb-8 text-black dark:text-white">blog</h1>
+    <div className="panel p-8 md:p-10">
+      <h1 className="font-serif text-3xl italic mb-8 text-[var(--global-text-color)]">Writing</h1>
       <div className="space-y-6">
-        {posts.map(post => (
-          <article 
-            key={post.slug} 
-            className="group p-6 rounded-lg border border-neutral-200 dark:border-gray-700 hover:border-[var(--global-theme-color)] hover:shadow-md transition-all duration-200 bg-white dark:bg-gray-800"
+        {posts.map((post, i) => (
+          <article
+            key={post.slug}
+            className={`group pb-6 ${i < posts.length - 1 ? "border-b border-[var(--global-border-color)]" : ""}`}
           >
-            <Link 
-              href={`/blog/${post.slug}`} 
-              className="block"
-            >
-              <h2 className="text-2xl font-semibold mb-2 group-hover:text-[var(--global-theme-color)] transition-colors duration-200 text-black dark:text-white">
+            <Link href={`/blog/${post.slug}`} className="block">
+              <h2 className="text-xl font-medium mb-1 text-[var(--global-text-color)] group-hover:text-[var(--global-theme-color)] transition-colors duration-200">
                 {post.title}
               </h2>
-              <p className="text-sm text-black dark:text-neutral-400 mb-3">{post.date}</p>
-              <p className="text-black dark:text-neutral-300 leading-relaxed whitespace-pre-line">
+              <p className="text-sm text-[var(--global-muted-color)] mb-3">{post.date}</p>
+              <p className="text-[var(--global-muted-color)] leading-relaxed whitespace-pre-line">
                 {post.summary}
               </p>
             </Link>

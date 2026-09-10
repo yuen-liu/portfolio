@@ -2,83 +2,68 @@
 
 :root {
   --global-theme-color: #2563eb;
-  --global-text-color: #000000;
-  --global-bg-color: #ffffff;
-  --global-card-bg: #ffffff;
-  --global-border-color: #e5e7eb;
-  --global-hover-color: #f9fafb;
+  --global-text-color: #1c1c1a;
+  --global-muted-color: #6b6b64;
+  --global-bg-color: #fafaf8;
+  --global-card-bg: rgba(255, 255, 255, 0.82);
+  --global-border-color: rgba(28, 28, 26, 0.1);
+  --global-hover-color: rgba(28, 28, 26, 0.05);
 }
 
 .dark {
-  --global-theme-color: #60a5fa;
-  --global-text-color: #f9fafb;
-  --global-bg-color: #111827;
-  --global-card-bg: #1f2937;
-  --global-border-color: #374151;
-  --global-hover-color: #1f2937;
+  --global-theme-color: #7fb0ff;
+  --global-text-color: #eceef2;
+  --global-muted-color: #94989e;
+  --global-bg-color: #0a0e17;
+  --global-card-bg: rgba(17, 21, 32, 0.78);
+  --global-border-color: rgba(236, 238, 242, 0.12);
+  --global-hover-color: rgba(236, 238, 242, 0.06);
 }
 
-body {
-  font-family: 'Calibri', 'Calibri Light', 'Segoe UI', Arial, sans-serif;
-  color: #000000 !important;
-  background-color: var(--global-bg-color);
-  transition: background-color 0.2s ease, color 0.2s ease;
+@layer base {
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    color: var(--global-text-color);
+    background-color: var(--global-bg-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 0.75;
+  }
 }
 
-* {
-  font-family: 'Calibri', 'Calibri Light', 'Segoe UI', Arial, sans-serif;
+.font-serif {
+  font-family: var(--font-display), Georgia, serif;
 }
 
-html.dark body {
-  color: var(--global-text-color) !important;
-}
-
-/* Ensure text elements are black in light mode */
-html:not(.dark) p,
-html:not(.dark) h1,
-html:not(.dark) h2,
-html:not(.dark) h3,
-html:not(.dark) h4,
-html:not(.dark) h5,
-html:not(.dark) h6,
-html:not(.dark) span,
-html:not(.dark) div:not([class*="text-"]) {
-  color: #000000;
-}
-
-a {
-  color: var(--global-theme-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  opacity: 0.8;
+.panel {
+  background-color: var(--global-card-bg);
+  border: 1px solid var(--global-border-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .prose {
-  line-height: 1.7;
-  color: #000000;
-}
-
-.dark .prose {
+  line-height: 1.75;
   color: var(--global-text-color);
 }
 
-.prose h1, .prose h2, .prose h3 {
-  color: #000000;
-  font-weight: 700;
-}
-
-.dark .prose h1, .dark .prose h2, .dark .prose h3 {
+.prose h1,
+.prose h2,
+.prose h3 {
   color: var(--global-text-color);
+  font-weight: 600;
 }
 
 .prose p {
   margin-bottom: 1.25em;
-  color: #000000;
-}
-
-.dark .prose p {
-  color: var(--global-text-color);
 }
