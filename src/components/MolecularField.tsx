@@ -205,9 +205,7 @@ function applyStyle(
     {
       cartoon: {
         color: proteinHovered
-          ? isDark
-            ? "#7fb0ff"
-            : "#2563eb"
+          ? "#7fb0ff"
           : isDark
             ? "#c7cedb"
             : "#4a5568",
