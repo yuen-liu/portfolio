@@ -51,7 +51,24 @@ export default function MolecularField() {
   const [popup, setPopup] = useState<Popup | null>(null);
   const factIndexRef = useRef({ A: 0, B: 0 });
 
+  // The interactive structure is sized and positioned for the desktop
+  // layout (fixed pixel dimensions, drag-to-rotate, scroll-to-zoom) and
+  // isn't adapted for touch/mobile — it also visually collides with the
+  // sidebar card at narrow widths. Only mount it at the same breakpoint
+  // the sidebar itself switches to its desktop layout (lg, 1024px), and
+  // tear it down again if the viewport crosses back below that.
+  const [isDesktop, setIsDesktop] = useState(false);
+
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
     let cancelled = false;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -149,7 +166,7 @@ export default function MolecularField() {
       }
       handleRef.current = null;
     };
-  }, []);
+  }, [isDesktop]);
 
   // re-style on theme toggle without tearing down/recreating the viewer
   useEffect(() => {
