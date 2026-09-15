@@ -24,7 +24,7 @@ const LIGAND_FACTS = [
 ];
 
 const PROTEIN_FACTS = [
-  "Every ribbon diagram you've ever seen — this one included — traces back to Jane S. Richardson, who hand-drew the first ones in 1981 (no PhD, self-taught structural biologist) to make protein topology legible at a glance. It's one of the most-used visual conventions in all of science, and she's still rarely the name people credit when they use it.",
+  "Every ribbon diagram you've ever seen — this one included — traces back to Jane S. Richardson, who hand-drew the first ones in 1981 (no PhD, self-taught structural biologist) to make protein topology legible at a glance. It's one of the most-used visual conventions in all of science!",
   "Bromodomains 'read' epigenetic marks — they recognize acetylated lysines on histone tails, acting as sensors of the histone code.",
   "This four-helix bundle fold is shared by all ~61 human bromodomains; small differences in the ZA and BC loops give each one its own selectivity.",
   "I used a similar sparse-autoencoder interpretability approach on protein–ligand binding at the Friesner Lab (with Schrödinger) — more on the work page.",
