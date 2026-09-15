@@ -61,6 +61,15 @@ const dryLabProjects = [
 
 const wetLabProjects = [
   {
+    title: "Deciphering the Biophysical Determinants of Peptide-Binding Domain Specificity Using Machine Learning",
+    authors: "Bridget Liu, Julia Rogers, Mohammed AlQuraishi",
+    award: "Best in Innovative AI, Columbia Research Fair 2026",
+    keywords: "Peptide-binding domains, protein language models, sparse autoencoders, interpretability, ESM-2",
+    abstract: "Protein–protein interactions mediated by peptide-binding domains (PBDs) and short linear motifs (SLiMs) play a key role in regulating cellular signaling pathways. Malfunctions in these pathways are implicated in a range of diseases, including cancer and neurological disorders. While high-throughput experimental methods have uncovered binding preferences within individual PBD families, they fall short of revealing the broader molecular principles that govern binding specificity across all PBD families found in the human proteome. In this work, we apply mechanistic interpretability techniques to protein language models to investigate the biophysical determinants of SLiM recognition across 24 human PBD families. Using sparse autoencoders, we extract interpretable features from protein representations and identify two distinct classes of features: (i) family-specific and (ii) features shared across two families. Our findings take the first steps towards revealing common recognition strategies and diverse specificity mechanisms that underlie PBD–SLiM interactions, offering a unified framework for understanding how signaling proteins achieve both selectivity and promiscuity. Our work highlights the potential of interpretable machine learning to uncover mechanistic insights into protein function and could serve as a future foundation for rationally engineering signaling interactions or diagnosing the effects of disease-associated mutations.",
+    paperLink: "https://docs.google.com/document/d/1blxfukPn6KUMSrTnk4tYVckrCWivrrAT-1ZcVPCFVzM/edit?usp=sharing",
+    posterLink: "https://docs.google.com/presentation/d/1FDN_a-TJ94auSVpg2iFZAiO3rSizZAiHkEVah0jY1-Q/edit?usp=sharing",
+  },
+  {
     title: "Sparse Autoencoders Recover Reproducible Structural Signal in Protein Language Model Latent Space Representations",
     authors:
       "Bridget Liu*†, Vignesh Karthik†, Andrew Meng†, Yuna Stechert, Davud Skenderi, Lyla Prasad, Osheen Abraham, Leela Iyer, Adit Anand, AJ Sillato (Columbia University; *presenting author, †equal contribution)",
@@ -144,7 +153,7 @@ export default function ProjectsPage() {
   }, [searchQuery]);
 
   return (
-    <div className="panel p-8 md:p-10">
+    <div className="pointer-events-auto panel p-8 md:p-10">
       <h1 className="font-serif text-3xl italic mb-5 text-[var(--global-text-color)]">Work</h1>
       <div className="relative w-full mb-10">
         <input
@@ -247,11 +256,19 @@ export default function ProjectsPage() {
           <div className="space-y-6">
             {filteredWetLabProjects.map((project, index) => (
               <div key={index} className="pb-6 border-b border-[var(--global-border-color)] last:border-0 last:pb-0">
-                <h3 className="text-base font-medium mb-1 text-[var(--global-text-color)]">{project.title}</h3>
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h3 className="text-base font-medium text-[var(--global-text-color)]">{project.title}</h3>
+                  {project.award && (
+                    <span className="flex-shrink-0 px-2 py-0.5 text-[10px] font-medium bg-[var(--global-theme-color)] text-white rounded">
+                      Award
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-[var(--global-muted-color)] mb-2">{project.authors}</p>
                 {"venue" in project && project.venue && (
                   <p className="text-sm mb-2 text-[var(--global-theme-color)]">{project.venue}</p>
                 )}
+                {project.award && <p className="text-xs text-[var(--global-theme-color)] mb-2">{project.award}</p>}
                 {project.doi && (
                   <p className="text-sm mb-2">
                     <span className="text-[var(--global-muted-color)]">DOI: </span>
@@ -264,6 +281,20 @@ export default function ProjectsPage() {
                   <span className="text-[var(--global-text-color)]">Keywords: </span>
                   {project.keywords}
                 </p>
+                {(project.paperLink || project.posterLink) && (
+                  <p className="text-sm mb-3 flex gap-4">
+                    {project.paperLink && (
+                      <a href={project.paperLink} target="_blank" rel="noopener noreferrer">
+                        View paper →
+                      </a>
+                    )}
+                    {project.posterLink && (
+                      <a href={project.posterLink} target="_blank" rel="noopener noreferrer">
+                        View poster →
+                      </a>
+                    )}
+                  </p>
+                )}
                 <details className="text-sm">
                   <summary className="cursor-pointer text-[var(--global-theme-color)]">Abstract</summary>
                   <p className="mt-2 text-[var(--global-muted-color)] leading-relaxed">{project.abstract}</p>

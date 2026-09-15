@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="panel p-8 md:p-10 max-w-xl">
+    <div className="pointer-events-auto panel p-8 md:p-10 max-w-xl">
       <h1 className="font-serif text-3xl md:text-[2.35rem] italic mb-5 text-[var(--global-text-color)]">
         Hi, I&apos;m Bridget.
       </h1>

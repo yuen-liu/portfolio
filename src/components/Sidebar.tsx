@@ -32,7 +32,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="lg:fixed lg:left-10 lg:top-10 lg:w-64 z-20 mb-10 lg:mb-0">
+    <aside className="pointer-events-auto lg:fixed lg:left-10 lg:top-10 lg:w-64 z-20 mb-10 lg:mb-0">
       <div className="panel overflow-hidden">
         <div className="px-5 pt-5 pb-4">
           <h1 className="font-serif text-lg leading-tight text-[var(--global-text-color)]">

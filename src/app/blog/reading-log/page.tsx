@@ -60,7 +60,7 @@ const months: Month[] = [
 
 export default function ReadingLogPost() {
   return (
-    <article className="panel p-8 md:p-10 space-y-8">
+    <article className="pointer-events-auto panel p-8 md:p-10 space-y-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">
           2026 Reading Log

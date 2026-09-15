@@ -24,10 +24,10 @@ const LIGAND_FACTS = [
 ];
 
 const PROTEIN_FACTS = [
+  "Every ribbon diagram you've ever seen — this one included — traces back to Jane S. Richardson, who hand-drew the first ones in 1981 (no PhD, self-taught structural biologist) to make protein topology legible at a glance. It's one of the most-used visual conventions in all of science, and she's still rarely the name people credit when they use it.",
   "Bromodomains 'read' epigenetic marks — they recognize acetylated lysines on histone tails, acting as sensors of the histone code.",
   "This four-helix bundle fold is shared by all ~61 human bromodomains; small differences in the ZA and BC loops give each one its own selectivity.",
   "I used a similar sparse-autoencoder interpretability approach on protein–ligand binding at the Friesner Lab (with Schrödinger) — more on the work page.",
-  "Cartoon ribbon diagrams like this one were pioneered by Jane Richardson in the early 1980s to make protein topology legible at a glance.",
   "This structure is a Chai-1 prediction, not an experimentally solved one — a reminder that even the 'real' structures on this site are computational hypotheses.",
   "Click again for another one →",
 ];
@@ -36,6 +36,7 @@ type ViewerHandle = {
   el: HTMLDivElement;
   viewer: import("3dmol").GLViewer;
   hoveredChain: string | null;
+  cleanupHoverSpin?: () => void;
 };
 
 type Popup = { x: number; y: number; text: string };
@@ -91,6 +92,7 @@ export default function MolecularField() {
       el.style.height = `${LAYOUT.height}px`;
       el.style.pointerEvents = "auto";
       el.style.cursor = "grab";
+      el.style.userSelect = "none";
       containerRef.current.appendChild(el);
 
       const viewer = $3Dmol.createViewer(el, {
@@ -147,6 +149,20 @@ export default function MolecularField() {
       if (!prefersReducedMotion) {
         viewer.spin("y", 0.4);
       }
+
+      // The constant spin makes it hard to land a click precisely, so
+      // freeze rotation the moment the cursor enters the structure and
+      // only resume once it leaves.
+      const stopSpin = () => viewer.spin(false);
+      const resumeSpin = () => {
+        if (!prefersReducedMotion) viewer.spin("y", 0.4);
+      };
+      el.addEventListener("mouseenter", stopSpin);
+      el.addEventListener("mouseleave", resumeSpin);
+      handle.cleanupHoverSpin = () => {
+        el.removeEventListener("mouseenter", stopSpin);
+        el.removeEventListener("mouseleave", resumeSpin);
+      };
     }
 
     setup();
@@ -161,6 +177,7 @@ export default function MolecularField() {
       window.removeEventListener("resize", handleResize);
       const handle = handleRef.current;
       if (handle) {
+        handle.cleanupHoverSpin?.();
         handle.viewer.spin(false);
         handle.el.remove();
       }

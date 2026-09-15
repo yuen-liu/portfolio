@@ -9,7 +9,7 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div className="panel p-8 md:p-10">
+    <div className="pointer-events-auto panel p-8 md:p-10">
       <h1 className="font-serif text-3xl italic mb-8 text-[var(--global-text-color)]">Writing</h1>
       <div className="space-y-6">
         {posts.map((post, i) => (
