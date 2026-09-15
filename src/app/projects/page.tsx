@@ -256,7 +256,7 @@ export default function ProjectsPage() {
           <div className="space-y-6">
             {filteredWetLabProjects.map((project, index) => (
               <div key={index} className="pb-6 border-b border-[var(--global-border-color)] last:border-0 last:pb-0">
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <div className="flex items-start justify-between gap-2 mb-1">
                   <h3 className="text-base font-medium text-[var(--global-text-color)]">{project.title}</h3>
                   {project.award && (
                     <span className="flex-shrink-0 px-2 py-0.5 text-[10px] font-medium bg-[var(--global-theme-color)] text-white rounded">
