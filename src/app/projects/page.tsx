@@ -51,6 +51,7 @@ const dryLabProjects = [
     title: "Columbia iGEM",
     description:
       "Built an SAE-enhanced diffusion pipeline and benchmarked 5+ diffusion models (Genie3, ESMFold2, BoltzGen, AlphaFold3, ProteinMPNN), generating 5K+ protein designs targeting stroke biomarkers (GFAP, UCH-L1). First author on our interpretability work from this project, \"Sparse Autoencoders Recover Reproducible Structural Signal in Protein Language Model Latent Space Representations,\" accepted to New England Computational Biology (NECB) 2026.",
+    link: "https://tinyurl.com/columbia-igem-wiki",
   },
   {
     title: "PBD Explorer",
