@@ -7,7 +7,9 @@ const experience = [
     role: "Student Researcher, XAI Team (Computer Vision & Robotics)",
     org: "Google",
     dates: "Aug 2026 – Present",
-    bullets: [],
+    bullets: [
+      "Building long-term spatial memory for robot navigation, fusing video via 3D foundation models (VGGT) and zero-shot VLN for building-scale relocalization.",
+    ],
   },
   {
     role: "R&D Clinical Data Science AI/ML Intern",
@@ -23,8 +25,8 @@ const experience = [
     org: "Friesner Lab, with Schrödinger",
     dates: "Sep 2025 – Present",
     bullets: [
-      "Developed a PyTorch sparse-autoencoder interpretability pipeline powering Schrödinger's protein-ligand docking suite, improving feature transparency across thousands of compounds; first author of a paper submitted to ICML.",
-      "Automated large-scale analysis of 300K+ docking cases via Python/Slurm pipelines on an HPC cluster, cutting data-processing times by over 20%.",
+      "Developed a PyTorch sparse-autoencoder interpretability pipeline powering Schrödinger's protein-ligand docking suite, improving feature transparency across thousands of compounds; first author of a paper submitted to NeurIPS 2026.",
+      "Automated large-scale analysis of 300K+ docking cases via Python/Slurm pipelines on an HPC cluster, cutting data-processing times by over 5x.",
       "Enhanced model reliability by 16%, cutting costs by 25% for production drug-design pipelines.",
     ],
   },
@@ -48,9 +50,14 @@ const dryLabProjects = [
     award: "Track Spotlight, AI Biosecurity Tools — AIxBio Hackathon 2026",
   },
   {
+    title: "HelixBase",
+    description:
+      "Co-founded an AI scientific knowledge platform at Columbia FastPitch 2025, growing to 700+ downloads with advisors from Moderna, Columbia, and Cold Spring Harbor Lab. Architected a RAG pipeline over 3K+ documents with a Neo4j knowledge graph backend.",
+  },
+  {
     title: "Columbia iGEM",
     description:
-      "Built an SAE-enhanced diffusion pipeline and benchmarked 5+ diffusion models (Genie3, ESMFold2, BoltzGen, AlphaFold3, ProteinMPNN), generating 5K+ protein designs targeting stroke biomarkers (GFAP, UCH-L1). First author on our interpretability work from this project, \"Sparse Autoencoders Recover Reproducible Structural Signal in Protein Language Model Latent Space Representations,\" accepted to New England Computational Biology (NECB) 2026.",
+      "Built an SAE-enhanced diffusion pipeline and benchmarked 4 diffusion models (ESMFold2, BoltzGen, AlphaFold3, ProteinMPNN), generating 5K+ protein designs targeting stroke biomarkers (GFAP, UCH-L1). First author on our interpretability work from this project, \"Sparse Autoencoders Recover Reproducible Structural Signal in Protein Language Model Latent Space Representations,\" accepted to New England Computational Biology (NECB) 2026.",
     link: "https://tinyurl.com/columbia-igem-wiki",
   },
   {
@@ -218,6 +225,11 @@ export default function ProjectsPage() {
           Innovative AI · Track Spotlight, AIxBio Hackathon 2026 (Apart Research) · Genes in
           Space Semifinalist (top 2%)
         </p>
+        <p className="text-[var(--global-muted-color)] text-sm leading-relaxed mt-2">
+          Coursework: Probabilistic Models &amp; Machine Learning (graduate) · Machine Learning
+          for Genomics (graduate) · Machine Learning · Natural Language Processing ·
+          Computational Robotics · Data Structures &amp; Algorithms
+        </p>
       </section>
 
       <section className="mb-10">
@@ -319,7 +331,7 @@ export default function ProjectsPage() {
           </p>
           <p>
             <span className="text-[var(--global-text-color)] font-medium">Tools: </span>
-            <span className="text-[var(--global-muted-color)]">Git, Docker, Azure, AWS, Slurm (HPC), Linux/Unix, PostgreSQL, Vercel, Figma, Neo4j</span>
+            <span className="text-[var(--global-muted-color)]">Git, Docker, Azure, AWS, Slurm (HPC), Linux/Unix, PostgreSQL, Vercel, Figma, Neo4j, Isaac Sim, PyBullet</span>
           </p>
         </div>
       </section>
