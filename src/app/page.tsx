@@ -27,8 +27,7 @@ export default function Home() {
       </p>
       <p className="text-[0.95rem] leading-relaxed text-[var(--global-muted-color)]">
         Before college, I spent three years at the bench, synthesizing small molecules and
-        running assays on neurodegeneration and sleep. I still think like a wet-lab
-        scientist about most dry-lab problems. Outside of research, I photograph{" "}
+        running assays on neurodegeneration and sleep. Outside of research, I photograph{" "}
         <a href="https://www.instagram.com/yuenabridged/" target="_blank" rel="noopener noreferrer">
           bits and pieces of life
         </a>
