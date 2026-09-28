@@ -10,6 +10,9 @@ type Month = {
   papers: Paper[];
 };
 
+// Bump this whenever you add or edit entries.
+const lastUpdated = "Sept. 15, 2026";
+
 const months: Month[] = [
   {
     label: "September 2026",
@@ -66,7 +69,7 @@ export default function ReadingLogPost() {
           2026 Reading Log
         </h1>
         <div className="text-black dark:text-neutral-400 text-sm">
-          Sept. 2026 – ongoing
+          Sept. 2026 – ongoing · Last updated {lastUpdated}
         </div>
       </div>
 
