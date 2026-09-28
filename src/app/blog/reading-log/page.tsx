@@ -1,21 +1,21 @@
 type Paper = {
   title: string;
   authors?: string;
-  link: string;
+  link?: string;
   note: string;
 };
 
-type Month = {
+type Section = {
   label: string;
   papers: Paper[];
 };
 
 // Bump this whenever you add or edit entries.
-const lastUpdated = "Sept. 15, 2026";
+const lastUpdated = "Sept. 28, 2026";
 
-const months: Month[] = [
+const sections: Section[] = [
   {
-    label: "September 2026",
+    label: "Robotics",
     papers: [
       {
         title: "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion",
@@ -42,11 +42,6 @@ const months: Month[] = [
         note: "Sort of has memory? SOTA as of ~July 2026 — a lot of follow-up work has already built on this dual implicit memory idea (separate spatial vs. semantic representations).",
       },
       {
-        title: "Arc Institute Virtual Cell Challenge 2026",
-        link: "https://arcinstitute.org/news/virtual-cell-challenge-2026",
-        note: "Brief skim — zero-shot prediction of CRISPRi knockdown responses in unseen cell lines. Planning on submitting to this one.",
-      },
-      {
         title: "Gemini Robotics: Bringing AI into the Physical World (GROD / Gemini Robotics-ER)",
         authors: "Google DeepMind",
         link: "https://arxiv.org/abs/2503.20020",
@@ -56,6 +51,84 @@ const months: Month[] = [
         title: "LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction",
         link: "https://arxiv.org/abs/2604.14141",
         note: "Builds on VGGT. A big open problem in these models is no absolute sense of scale — LingBot-Map tackles this with a persistent, linearly-scaling spatial memory instead of reprocessing everything each frame.",
+      },
+    ],
+  },
+  {
+    label: "Bio",
+    papers: [
+      {
+        title: "Arc Institute Virtual Cell Challenge 2026",
+        link: "https://arcinstitute.org/news/virtual-cell-challenge-2026",
+        note: "Brief skim — zero-shot prediction of CRISPRi knockdown responses in unseen cell lines. Planning on submitting to this one.",
+      },
+      {
+        title: "TANGO: Direct Optimization of Constrained Synthesizability for Generative Molecular Design",
+        authors: "Guo & Schwaller, Nature Computational Science 2026",
+        link: "https://www.nature.com/articles/s43588-026-00959-1",
+        note: "The first case I've seen of using RL instead of pre-training to bake in synthesizability constraints. Fits the general pattern: LLM/pre-training → fine-tune with RL.",
+      },
+      {
+        title: "Saturn: Sample-efficient Generative Molecular Design using Memory Manipulation",
+        authors: "Guo & Schwaller, 2024",
+        link: "https://arxiv.org/abs/2405.17066",
+        note: "The field is shifting toward 3D-equivariant/diffusion techniques (i.e. structure-based drug design), but Saturn shows SMILES/language-based models are still great at learning chemical properties. I'd bet on both: a hybrid of language-based/SMILES + diffusion.",
+      },
+    ],
+  },
+  {
+    label: "Theory",
+    papers: [
+      {
+        title: "Denoising Diffusion Probabilistic Models (DDPM)",
+        authors: "Ho, Jain & Abbeel, 2020",
+        link: "https://arxiv.org/abs/2006.11239",
+        note: "In progress.",
+      },
+      {
+        title: "Denoising Diffusion Implicit Models (DDIM)",
+        authors: "Song, Meng & Ermon, 2020",
+        link: "https://arxiv.org/abs/2010.02502",
+        note: "In progress.",
+      },
+      {
+        title: "Score matching / flow matching",
+        note: "In progress.",
+      },
+      {
+        title: "Build, Compute, Critique, Repeat: Data Analysis with Latent Variable Models",
+        authors: "Blei, 2014",
+        link: "https://www.cs.columbia.edu/~blei/papers/Blei2014b.pdf",
+        note: "Written by my Probabilistic Models & ML professor, one of the leading experts in the field. Wrote my reading notes on this one!",
+      },
+      {
+        title: "The Collapsed Gibbs Sampler in Bayesian Computations with Applications to a Gene Regulation Problem",
+        authors: "Liu, 1994",
+        link: "https://www.cs.columbia.edu/~blei/fogm/readings/Liu1994.pdf",
+        note: "Wrote my reading notes on this one too!",
+      },
+      {
+        title: "Muon: An optimizer for hidden layers in neural networks",
+        authors: "Keller Jordan, 2024",
+        link: "https://kellerjordan.github.io/posts/muon/",
+        note: "An alternative to Adam — on my to-read list. From what I gather, it orthogonalizes the update using the full 2D weight matrix, but I need to actually dig in.",
+      },
+    ],
+  },
+  {
+    label: "Blogs",
+    papers: [
+      {
+        title: "Learning and Control",
+        authors: "Sergey Levine",
+        link: "https://sergeylevine.substack.com/",
+        note: "Robotics!",
+      },
+      {
+        title: "A Workaphile's Apology",
+        authors: "Mohammed AlQuraishi, 2026",
+        link: "https://moalquraishi.wordpress.com/2026/08/10/a-workaphiles-apology/",
+        note: "On what a meaningful human life looks like when thinking is best done by machines.",
       },
     ],
   },
@@ -76,29 +149,34 @@ export default function ReadingLogPost() {
       <div className="prose max-w-none text-black dark:text-neutral-300 leading-relaxed space-y-6">
         <p>
           A running log of papers I&apos;m reading, starting September 2026. Mostly
-          robotics (diffusion policies, 3D representations) and a bit of everything
-          else that catches my eye. Updated as I go.
+          robotics, bio, and ML theory, plus a few blogs I follow.
         </p>
 
-        {months.map((month) => (
-          <div key={month.label} className="space-y-6">
+        {sections.map((section) => (
+          <div key={section.label} className="space-y-6">
             <h2 className="text-2xl font-semibold mt-8 mb-4 text-black dark:text-white">
-              {month.label}
+              {section.label}
             </h2>
             <ul className="space-y-5">
-              {month.papers.map((paper) => (
+              {section.papers.map((paper) => (
                 <li
-                  key={paper.link}
+                  key={paper.title}
                   className="border-b border-neutral-200 dark:border-neutral-800 pb-5 last:border-b-0"
                 >
-                  <a
-                    href={paper.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    {paper.title}
-                  </a>
+                  {paper.link ? (
+                    <a
+                      href={paper.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {paper.title}
+                    </a>
+                  ) : (
+                    <span className="text-lg font-medium text-black dark:text-white">
+                      {paper.title}
+                    </span>
+                  )}
                   {paper.authors && (
                     <div className="text-sm text-neutral-500 dark:text-neutral-500 mt-0.5">
                       {paper.authors}
