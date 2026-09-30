@@ -108,7 +108,8 @@ export default function Sidebar() {
           (Chai Discovery, 2024).
         </p>
         <p className="px-5 pb-4 text-[11px] leading-snug text-[var(--global-muted-color)]">
-          interact with said structures for easter eggs!
+          interact with said structures for easter eggs! a shy robot also
+          lives here—try typing its name, or clicking mine a bunch of times.
         </p>
         <p className="px-5 py-3 border-t border-[var(--global-border-color)] text-[11px] text-[var(--global-muted-color)]">
           © {new Date().getFullYear()} Bridget Liu
