@@ -15,10 +15,10 @@ const SECRET = "robot";
 const AUTO_HIDE_MS = 12000;
 
 const LINES = [
-  "beep boop. you found me.",
+  "beep boop... [loading] you found me!",
   "i'm learning to remember where i left things. it's going okay.",
-  "i can relocalize across a whole building. still can't find my charger.",
-  "my latent space is interpretable. mostly.",
+  "i can help bridget (and you!) relocalize across a whole building, but still can't find a charger.",
+  "my latent space is interpretable. mostly...",
   "(click me for more)",
 ];
 
