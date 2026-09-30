@@ -67,3 +67,47 @@
 .prose p {
   margin-bottom: 1.25em;
 }
+
+/* Robot easter egg (src/components/RobotEgg.tsx) */
+.robot-egg {
+  transform: translateY(110%);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.robot-egg--in {
+  transform: translateY(0);
+}
+.robot-egg__bot {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.robot-egg__bot:hover {
+  transform: translateY(-4px);
+}
+.robot-egg__antenna {
+  transform-origin: 52px 24px;
+  animation: robot-bob 1.6s ease-in-out infinite;
+}
+.robot-egg__eyes {
+  transform-origin: 52px 46px;
+  animation: robot-blink 4s infinite;
+}
+.robot-egg__wave {
+  transform-origin: 86px 84px;
+  animation: robot-wave 1.2s ease-in-out infinite;
+}
+@keyframes robot-bob {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+@keyframes robot-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes robot-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-150deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .robot-egg { transition: none; }
+  .robot-egg__antenna, .robot-egg__eyes, .robot-egg__wave { animation: none; }
+}

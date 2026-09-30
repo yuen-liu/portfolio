@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRef } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { ROBOT_EVENT } from "./RobotEgg";
 
 const navItems = [
   { href: "/", label: "about" },
@@ -30,12 +32,25 @@ const socials = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const nameClicks = useRef<number[]>([]);
+
+  const onNameClick = () => {
+    const now = Date.now();
+    nameClicks.current = [...nameClicks.current.filter((t) => now - t < 2000), now];
+    if (nameClicks.current.length >= 5) {
+      nameClicks.current = [];
+      window.dispatchEvent(new Event(ROBOT_EVENT));
+    }
+  };
 
   return (
     <aside className="pointer-events-auto lg:fixed lg:left-10 lg:top-10 lg:w-64 z-20 mb-10 lg:mb-0">
       <div className="panel overflow-hidden">
         <div className="px-5 pt-5 pb-4">
-          <h1 className="font-serif text-lg leading-tight text-[var(--global-text-color)]">
+          <h1
+            onClick={onNameClick}
+            className="font-serif text-lg leading-tight text-[var(--global-text-color)] select-none"
+          >
             Bridget Liu
           </h1>
           <p className="text-xs text-[var(--global-muted-color)]">Columbia University</p>

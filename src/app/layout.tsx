@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Sidebar from "@/components/Sidebar";
 import MolecularField from "@/components/MolecularField";
+import RobotEgg from "@/components/RobotEgg";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
               <main className="w-full">{children}</main>
             </div>
           </div>
+          <RobotEgg />
         </ThemeProvider>
         <Analytics />
       </body>
