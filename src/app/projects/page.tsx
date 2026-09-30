@@ -25,7 +25,7 @@ const experience = [
     org: "Friesner Lab, with Schrödinger",
     dates: "Sep 2025 – Present",
     bullets: [
-      "Developed a PyTorch sparse-autoencoder interpretability pipeline powering Schrödinger's protein-ligand docking suite, improving feature transparency across thousands of compounds; first author of a paper submitted to NeurIPS 2026.",
+      "Developed a PyTorch sparse-autoencoder interpretability pipeline powering Schrödinger's protein-ligand docking suite, improving feature transparency across thousands of compounds; first author of a paper accepted to the NeurIPS 2026 ICBINB-Bio workshop.",
       "Automated large-scale analysis of 300K+ docking cases via Python/Slurm pipelines on an HPC cluster, cutting data-processing times by over 5x.",
       "Enhanced model reliability by 16%, cutting costs by 25% for production drug-design pipelines.",
     ],
@@ -46,7 +46,7 @@ const dryLabProjects = [
   {
     title: "Metageniuses",
     description:
-      "Trained BatchTopK sparse autoencoders on METAGENE-1, a metagenomic foundation model, to study whether internal features are biologically meaningful. Achieved 94.55% accuracy (AUROC 0.9874) on pathogen vs. non-pathogen classification, with BLAST-validated organism-specific latent detectors for Human astrovirus, Norovirus GI/GII, and Sapovirus GI.",
+      "Trained BatchTopK sparse autoencoders on METAGENE-1, a metagenomic foundation model, to study whether internal features are biologically meaningful. Achieved 94.55% accuracy (AUROC 0.9874) on pathogen vs. non-pathogen classification, with BLAST-validated organism-specific latent detectors for Human astrovirus, Norovirus GI/GII, and Sapovirus GI. Published at the NeurIPS 2026 ICBINB-Bio workshop.",
     award: "Track Spotlight, AI Biosecurity Tools — AIxBio Hackathon 2026",
   },
   {
@@ -68,6 +68,24 @@ const dryLabProjects = [
 ];
 
 const wetLabProjects = [
+  {
+    title: "Disentangling the Black Box: Interpretable Protein-Ligand Docking with Sparse Autoencoders",
+    authors: "Bridget Liu, D. Konstantinovsky, Y. Wang, B. Narayan, R. A. Friesner",
+    venue: "NeurIPS 2026 Workshop: ICBINB-Bio",
+    keywords: "Sparse autoencoders, interpretability, protein-ligand docking, drug design",
+  },
+  {
+    title: "Interpretable Latents Do Not Imply Causal Biosecurity Use",
+    authors: "M. Jain, P. Jackson, Bridget Liu, C. Walsh, A. Teo",
+    venue: "NeurIPS 2026 Workshop: ICBINB-Bio",
+    keywords: "Sparse autoencoders, biosecurity, metagenomic foundation models, METAGENE-1, interpretability",
+  },
+  {
+    title: "RoboMemo: Personalized Robot Manipulation from Everyday Smart-Glasses Recordings",
+    authors: "X. Yu, Y. Chen, A. Nhu, Bridget Liu, X. Yuan, H. Culbertson, Z. Jia",
+    venue: "Under review, ICRA 2027",
+    keywords: "Robot manipulation, personalization, smart glasses, egocentric video",
+  },
   {
     title: "Deciphering the Biophysical Determinants of Peptide-Binding Domain Specificity Using Machine Learning",
     authors: "Bridget Liu, Julia Rogers, Mohammed AlQuraishi",
@@ -143,7 +161,7 @@ export default function ProjectsPage() {
         project.title.toLowerCase().includes(query) ||
         project.authors.toLowerCase().includes(query) ||
         project.keywords.toLowerCase().includes(query) ||
-        project.abstract.toLowerCase().includes(query) ||
+        (project.abstract && project.abstract.toLowerCase().includes(query)) ||
         (project.doi && project.doi.toLowerCase().includes(query)) ||
         ("venue" in project && project.venue && project.venue.toLowerCase().includes(query))
     );
@@ -308,10 +326,12 @@ export default function ProjectsPage() {
                     )}
                   </p>
                 )}
-                <details className="text-sm">
-                  <summary className="cursor-pointer text-[var(--global-theme-color)]">Abstract</summary>
-                  <p className="mt-2 text-[var(--global-muted-color)] leading-relaxed">{project.abstract}</p>
-                </details>
+                {project.abstract && (
+                  <details className="text-sm">
+                    <summary className="cursor-pointer text-[var(--global-theme-color)]">Abstract</summary>
+                    <p className="mt-2 text-[var(--global-muted-color)] leading-relaxed">{project.abstract}</p>
+                  </details>
+                )}
               </div>
             ))}
           </div>
