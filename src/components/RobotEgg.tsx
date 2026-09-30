@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { claimEggKeys, eggStep, releaseEggKeys } from "./eggKeys";
 
 // A little robot that pops up from the bottom-right corner. Two triggers:
 // typing "robot" anywhere on the page (outside an input), or clicking my
@@ -19,7 +20,7 @@ const LINES = [
   "i'm learning to remember where i left things. it's going okay.",
   "i can help bridget (and you!) relocalize across a whole building, but still can't find a charger.",
   "my latent space is interpretable. mostly...",
-  "(click me for more)",
+  "(click me, or press space / → for more)",
 ];
 
 export default function RobotEgg() {
@@ -35,8 +36,34 @@ export default function RobotEgg() {
   const show = useCallback(() => {
     setLineIdx(0);
     setVisible(true);
+    claimEggKeys("robot");
     scheduleHide();
   }, [scheduleHide]);
+
+  const step = useCallback(
+    (dir: 1 | -1) => {
+      setLineIdx((i) => (i + dir + LINES.length) % LINES.length);
+      scheduleHide();
+    },
+    [scheduleHide]
+  );
+
+  useEffect(() => {
+    if (visible) return;
+    releaseEggKeys("robot");
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+    const onKey = (e: KeyboardEvent) => {
+      const dir = eggStep(e, "robot");
+      if (!dir) return;
+      e.preventDefault();
+      step(dir);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [visible, step]);
 
   useEffect(() => {
     let typed = "";
@@ -57,8 +84,8 @@ export default function RobotEgg() {
   }, [show]);
 
   const nextLine = () => {
-    setLineIdx((i) => (i + 1) % LINES.length);
-    scheduleHide();
+    claimEggKeys("robot");
+    step(1);
   };
 
   return (

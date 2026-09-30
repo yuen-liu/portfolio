@@ -11,7 +11,7 @@ type Section = {
 };
 
 // Bump this whenever you add or edit entries.
-const lastUpdated = "Sept. 28, 2026";
+const lastUpdated = "Sept. 30, 2026";
 
 const sections: Section[] = [
   {
@@ -129,6 +129,18 @@ const sections: Section[] = [
         authors: "Mohammed AlQuraishi, 2026",
         link: "https://moalquraishi.wordpress.com/2026/08/10/a-workaphiles-apology/",
         note: "On what a meaningful human life looks like when thinking is best done by machines.",
+      },
+      {
+        title: "Alisa's Book of LLMs",
+        authors: "Alisa Liu",
+        link: "https://alisawuffles.notion.site/alisa-s-book-of-llms",
+        note: "Notes on LLMs.",
+      },
+      {
+        title: "Math Notes",
+        authors: "Alisa Liu",
+        link: "https://alisawuffles.notion.site/math-notes",
+        note: "Math notes.",
       },
     ],
   },

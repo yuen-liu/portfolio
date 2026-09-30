@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "./ThemeProvider";
+import { claimEggKeys, eggStep, releaseEggKeys } from "./eggKeys";
 
 // ARV-825 docked against the BRD4 BD1 bromodomain, predicted with Chai-1
 // (Chai Discovery, 2024, bioRxiv 10.1101/2024.10.10.615955) from the
@@ -20,7 +21,7 @@ const LIGAND_FACTS = [
   "ARV-825 links a BET-bromodomain binder (derived from OTX015/JQ1) to a cereblon-binding thalidomide analog via a flexible PEG linker.",
   "Because PROTACs act catalytically — one molecule can degrade many copies of its target — they can work at much lower doses than a typical inhibitor.",
   "PROTAC potency depends on how stable the ternary complex (target–PROTAC–E3 ligase) is, not just how tightly either end binds alone — sometimes called 'event-driven' pharmacology.",
-  "Click again for another one →",
+  "Click again, or press space / ← → for another one.",
 ];
 
 const PROTEIN_FACTS = [
@@ -29,7 +30,7 @@ const PROTEIN_FACTS = [
   "This four-helix bundle fold is shared by all ~61 human bromodomains; small differences in the ZA and BC loops give each one its own selectivity.",
   "I used a similar sparse-autoencoder interpretability approach on protein–ligand binding at the Friesner Lab (with Schrödinger) — more on the work page.",
   "This structure is a Chai-1 prediction, not an experimentally solved one — a reminder that even the 'real' structures on this site are computational hypotheses.",
-  "Click again for another one →",
+  "Click again, or press space / ← → for another one.",
 ];
 
 type ViewerHandle = {
@@ -39,7 +40,9 @@ type ViewerHandle = {
   cleanupHoverSpin?: () => void;
 };
 
-type Popup = { x: number; y: number; text: string };
+type Popup = { x: number; y: number; chain: "A" | "B"; idx: number };
+
+const factsFor = (chain: "A" | "B") => (chain === "B" ? LIGAND_FACTS : PROTEIN_FACTS);
 
 const LAYOUT = { right: "0%", top: "6%", width: 900, height: 900 };
 
@@ -133,10 +136,10 @@ export default function MolecularField() {
         true,
         (atom: { chain: "A" | "B" }, _v: unknown, event: MouseEvent) => {
           if (!atom) return;
-          const facts = atom.chain === "B" ? LIGAND_FACTS : PROTEIN_FACTS;
-          const idx = factIndexRef.current[atom.chain] % facts.length;
-          factIndexRef.current[atom.chain] += 1;
-          setPopup({ x: event.clientX, y: event.clientY, text: facts[idx] });
+          const idx = factIndexRef.current[atom.chain] % factsFor(atom.chain).length;
+          factIndexRef.current[atom.chain] = idx + 1;
+          claimEggKeys("facts");
+          setPopup({ x: event.clientX, y: event.clientY, chain: atom.chain, idx });
         }
       );
 
@@ -185,6 +188,29 @@ export default function MolecularField() {
     };
   }, [isDesktop]);
 
+  // Space / → / ← step through the open popup's facts, keeping the
+  // per-chain click counter in sync so the next click continues from here.
+  useEffect(() => {
+    if (!popup) {
+      releaseEggKeys("facts");
+      return;
+    }
+    const onKey = (e: KeyboardEvent) => {
+      const dir = eggStep(e, "facts");
+      if (!dir) return;
+      e.preventDefault();
+      setPopup((p) => {
+        if (!p) return p;
+        const n = factsFor(p.chain).length;
+        const idx = (p.idx + dir + n) % n;
+        factIndexRef.current[p.chain] = idx + 1;
+        return { ...p, idx };
+      });
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [popup]);
+
   // re-style on theme toggle without tearing down/recreating the viewer
   useEffect(() => {
     const handle = handleRef.current;
@@ -217,7 +243,7 @@ export default function MolecularField() {
             ×
           </button>
           <p className="pr-4 text-[var(--global-text-color)] leading-relaxed">
-            {popup.text}
+            {factsFor(popup.chain)[popup.idx]}
           </p>
         </div>
       )}
